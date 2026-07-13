@@ -1,0 +1,17 @@
+{
+  "name": "NDMO Platform Demo",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [5173],
+  "portsAttributes": {
+    "5173": {
+      "label": "NDMO read-only demo",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "docker compose build",
+  "postStartCommand": "docker compose up -d",
+  "remoteUser": "vscode"
+}

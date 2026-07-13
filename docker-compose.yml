@@ -1,0 +1,56 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ndmo_demo
+      POSTGRES_USER: ndmo_demo
+      POSTGRES_PASSWORD: ndmo_demo_password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ndmo_demo -d ndmo_demo"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - ndmo-demo-db:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      DB_NAME: ndmo_demo
+      DB_USER: ndmo_demo
+      DB_PASSWORD: ndmo_demo_password
+      DB_HOST: postgres
+      DB_PORT: 5432
+      CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+      DEMO_MODE: "true"
+      DEMO_VIEWER_USERNAME: demo.viewer
+      DEMO_VIEWER_PASSWORD: ViewOnly2026!
+      DEMO_VIEWER_DISPLAY_NAME: Portfolio Visitor
+      AI_PROVIDER: demo
+      AI_MODEL_NAME: qwen2.5:7b-instruct-precomputed-demo
+      AI_BASE_MODEL_NAME: Qwen2.5 Instruct
+      EMBEDDING_PROVIDER: disabled
+      EVIDENCE_RETRIEVAL_MODE: stored_demo
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: /
+    ports:
+      - "5173:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  ndmo-demo-db:

@@ -1,0 +1,9 @@
+.git/
+.venv/
+.DS_Store
+backend/.env
+backend/__pycache__/
+backend/uploaded_evidence/
+frontend/node_modules/
+frontend/dist/
+uploaded_evidence/

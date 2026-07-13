@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="128" viewBox="0 0 520 128" role="img" aria-labelledby="title desc">
+  <title id="title">NDMO Platform logo</title>
+  <desc id="desc">Full NDMO Platform logo with a minimal AI data governance mark and wordmark.</desc>
+  <defs>
+    <linearGradient id="markBg" x1="18" y1="18" x2="104" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071B33"/>
+      <stop offset="1" stop-color="#123B66"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="44" y1="88" x2="88" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#16A085"/>
+      <stop offset="1" stop-color="#1677FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="96" height="96" rx="24" fill="url(#markBg)"/>
+  <path d="M43 85V43" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+  <path d="M85 85V43" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" opacity=".92"/>
+  <path d="M44 44 84 84" stroke="url(#signal)" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="42" cy="42" r="5.5" fill="#16A085"/>
+  <circle cx="86" cy="86" r="5.5" fill="#1677FF"/>
+  <path d="M36 94h56" stroke="#FFFFFF" stroke-opacity=".18" stroke-width="3.5" stroke-linecap="round"/>
+  <text x="140" y="58" fill="#0B1F3A" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="850">NDMO Platform</text>
+  <text x="140" y="88" fill="#64748B" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="650">AI-Powered Data Governance</text>
+  <rect x="140" y="100" width="180" height="5" rx="2.5" fill="url(#signal)"/>
+</svg>
